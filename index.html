@@ -1,0 +1,618 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Monitoring Kas - Bank Cair QRIS</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modern_cny_2026.css">
+    <link rel="stylesheet" href="settings_cny_2026.css">
+    <link rel="stylesheet" href="stability_fixes.css">
+    <style>
+        /* EXTRA OVERRIDE FOR ULTRA ANUNNAKI MODAL */
+        .modal-content.modal-wide {
+            background: #020617 !important;
+            border: 3px solid #3b82f6 !important;
+            box-shadow: 0 0 100px rgba(59, 130, 246, 0.6) !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+
+        .modal-content.modal-wide::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 200% !important;
+            height: 200% !important;
+            background-image:
+                linear-gradient(rgba(59, 130, 246, 0.2) 2px, transparent 2px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.2) 2px, transparent 2px) !important;
+            background-size: 40px 40px !important;
+            z-index: 0 !important;
+            animation: grid-move-extreme 15s linear infinite !important;
+            opacity: 0.6 !important;
+        }
+
+        @keyframes grid-move-extreme {
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(-40px, -40px);
+            }
+        }
+
+        .modal-content.modal-wide .modal-body {
+            background: rgba(2, 6, 23, 0.85) !important;
+            backdrop-filter: blur(15px) !important;
+            border-top: 1px solid rgba(59, 130, 246, 0.3) !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background Element -->
+    <div class="background-container">
+        <canvas id="bg-canvas"></canvas>
+        <div class="bg-gradient"></div>
+        <div class="bg-pattern"></div>
+        <div class="sumerian-bg"></div>
+        <!-- Fixed Corner Lanterns -->
+        <div class="cny-lantern-hang fixed-left">
+            <div class="lantern-string" style="height: 60px;"></div>
+            <div class="lantern-stack">
+                <div class="lantern-container">
+                    <div class="lantern-top-cap" style="width: 20px;"></div>
+                    <div class="lantern-shape round small">
+                        <div class="rib-c"></div>
+                        <div class="rib-l"></div>
+                        <div class="rib-r"></div>
+                    </div>
+                    <div class="lantern-bottom-cap" style="width: 20px;"></div>
+                </div>
+                <div class="lantern-connector"></div>
+                <!-- Main Round Lantern (Large) -->
+                <div class="lantern-container">
+                    <div class="lantern-top-cap"></div>
+                    <div class="lantern-shape round large">
+                        <div class="rib-c"></div>
+                        <div class="rib-l"></div>
+                        <div class="rib-r"></div>
+                    </div>
+                    <div class="lantern-bottom-cap"></div>
+                    <div class="lantern-knot"></div>
+                    <div class="lantern-tassel-end"></div>
+                </div>
+            </div>
+        </div>
+        <div class="cny-lantern-hang fixed-right">
+            <div class="lantern-string" style="height: 100px;"></div>
+            <div class="lantern-container">
+                <div class="lantern-top-cap"></div>
+                <div class="lantern-shape">
+                    <div class="rib-c"></div>
+                    <div class="rib-l"></div>
+                    <div class="rib-r"></div>
+                </div>
+                <div class="lantern-bottom-cap"></div>
+                <div class="lantern-knot"></div>
+                <div class="lantern-tassel-end"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard Container -->
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <!-- Left: Title & Date -->
+            <div class="header-left">
+                <div class="title-main-container">
+                    <h1 id="dashboard-title">DASHBOARD MONITORING KAS</h1>
+                    <div class="subtitle-wrapper" style="display: flex; align-items: center; gap: 15px;">
+                        <div id="live-date-anunnaki" class="anunnaki-date-display">
+                            <div class="sync-status"
+                                style="background: transparent; border: none; padding: 0; box-shadow: none;">
+                                <span class="status-dot"></span>
+                                <span id="sync-text" title="KLIK UNTUK GANTI MODE (MASTER/CLIENT)"
+                                    style="cursor: pointer; color: #eab308; font-weight: 900; letter-spacing: 2px;">LIVE
+                                    CONNECTED</span>
+                            </div>
+                            <!-- Separator Line -->
+                            <div style="width: 1px; height: 20px; background: rgba(255,255,255,0.1); margin: 0 10px;">
+                            </div>
+
+                            <div class="date-content">
+                                <span id="live-day" class="date-day">---</span>
+                                <span class="date-sep"></span>
+                                <span id="live-date-text" class="date-main">-- --- ----</span>
+                                <span id="live-time-anunnaki" class="date-time">00:00:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center: Logo & Settings -->
+            <div class="header-center">
+                <!-- CNY Live Style Logo -->
+                <div class="cny-live-logo">
+                    <div class="cny-modern-layout">
+                        <!-- Graphic Container (Left Side) -->
+                        <div class="cny-logo-graphic-container">
+                            <!-- Hanging Lantern Left -->
+                            <!-- Hanging Lantern Left (Mixed Round Stack) -->
+                            <div class="cny-lantern-hang left">
+                                <div class="lantern-string" style="height: 30px;"></div>
+                                <div class="lantern-stack">
+                                    <div class="lantern-container">
+                                        <div class="lantern-top-cap" style="width: 15px;"></div>
+                                        <div class="lantern-shape round small">
+                                            <div class="rib-c"></div>
+                                            <div class="rib-l"></div>
+                                            <div class="rib-r"></div>
+                                        </div>
+                                        <div class="lantern-bottom-cap" style="width: 15px;"></div>
+                                    </div>
+                                    <div class="lantern-connector"></div>
+                                    <div class="lantern-container">
+                                        <div class="lantern-top-cap"></div>
+                                        <div class="lantern-shape">
+                                            <div class="rib-c"></div>
+                                            <div class="rib-l"></div>
+                                            <div class="rib-r"></div>
+                                        </div>
+                                        <div class="lantern-bottom-cap"></div>
+                                        <div class="lantern-knot"></div>
+                                        <div class="lantern-tassel-end"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Hanging Lantern Right -->
+                            <div class="cny-lantern-hang right">
+                                <div class="lantern-string"></div>
+                                <div class="lantern-container">
+                                    <div class="lantern-top-cap"></div>
+                                    <div class="lantern-shape">
+                                        <div class="rib-c"></div>
+                                        <div class="rib-l"></div>
+                                        <div class="rib-r"></div>
+                                    </div>
+                                    <div class="lantern-bottom-cap"></div>
+                                    <div class="lantern-knot"></div>
+                                    <div class="lantern-tassel-end"></div>
+                                </div>
+                            </div>
+
+                            <!-- Hanging Lantern Right 2 (Far Right) -->
+                            <div class="cny-lantern-hang right-2">
+                                <div class="lantern-string" style="height: 40px;"></div>
+                                <div class="lantern-container">
+                                    <div class="lantern-top-cap"></div>
+                                    <div class="lantern-shape round small">
+                                        <div class="rib-c"></div>
+                                        <div class="rib-l"></div>
+                                        <div class="rib-r"></div>
+                                    </div>
+                                    <div class="lantern-bottom-cap"></div>
+                                    <div class="lantern-knot"></div>
+                                    <div class="lantern-tassel-end"></div>
+                                </div>
+                            </div>
+
+                            <!-- Clouds -->
+                            <div class="cny-cloud cloud-red top-right"><i class="fas fa-cloud"></i></div>
+                            <div class="cny-cloud cloud-gold bottom-left"><i class="fas fa-cloud"></i></div>
+
+                            <!-- Main Content Stack -->
+                            <div class="cny-text-stack">
+                                <div class="cny-text-happy">HAPPY</div>
+                                <div class="cny-digits-2026">2026</div>
+                                <div class="cny-text-newyear">New Year</div>
+                            </div>
+                        </div>
+
+                        <!-- Info Box (Right Side) -->
+                        <div class="cny-info-box">
+                            <div class="cny-subtext-group">
+                                <span class="sub-gongxi">Gong Xi Fa Cai 2577</span>
+                                <span class="sub-mandarin">恭喜发财 • 马年</span>
+                                <span class="sub-vector">Year of the Horse Vector</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Auto Refresh & Buttons -->
+            <div class="header-right"
+                style="display: flex; align-items: center; gap: 15px; margin-left: auto; margin-right: -15px;">
+                <div class="auto-refresh-container">
+                    <span id="auto-refresh-label">
+                        AUTO REFRESH <span id="timer-display" class="timer-countdown"></span>
+                    </span>
+                    <label class="switch">
+                        <input type="checkbox" id="auto-refresh-toggle" onchange="toggleAutoRefresh()">
+                        <span class="slider round"></span>
+                    </label>
+                    <div style="display: flex; align-items: center;">
+                        <input type="number" id="refresh-interval" value="60" min="1">
+                        <span class="input-suffix">Sec</span>
+                    </div>
+                </div>
+                <button class="btn-refresh" onclick="location.reload()">Refresh Data</button>
+                <button class="btn-settings" onclick="openSettings()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.1a2 2 0 0 1-1-1.72v-.51a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z">
+                        </path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    Settings
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content Area where JSON data will be rendered horizontal style -->
+        <main id="main-content" class="content-rows">
+            <!-- Sections will be injected here by JS -->
+        </main>
+
+        <!-- Footer Actions -->
+        <footer class="dashboard-footer">
+            <!-- Detailed Statistics Panel (3 Hubs) -->
+            <div class="footer-stats-container">
+                <!-- BOX 1: 25JT & 50JT -->
+                <div class="stat-hub-box">
+                    <div class="cny-lantern-hang hub-lantern-right">
+                        <div class="lantern-string" style="height: 40px;"></div>
+                        <div class="lantern-container">
+                            <div class="lantern-top-cap"></div>
+                            <div class="lantern-shape">
+                                <div class="rib-c"></div>
+                                <div class="rib-l"></div>
+                                <div class="rib-r"></div>
+                            </div>
+                            <div class="lantern-bottom-cap"></div>
+                            <div class="lantern-knot"></div>
+                            <div class="lantern-tassel-end"></div>
+                        </div>
+                    </div>
+                    <div class="hub-header">HUB 01 | BASIC LIMITS</div>
+                    <div class="hub-content">
+                        <div class="stat-item">
+                            <span class="stat-label">MAX 25JT:</span>
+                            <span id="stat-count-25" class="stat-count">0 BANK</span>
+                            <span id="stat-total-25" class="stat-amount">Rp 0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">MAX 50JT:</span>
+                            <span id="stat-count-50" class="stat-count">0 BANK</span>
+                            <span id="stat-total-50" class="stat-amount">Rp 0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BOX 2: 100JT & 150JT -->
+                <div class="stat-hub-box">
+                    <div class="cny-lantern-hang hub-lantern-right">
+                        <div class="lantern-string" style="height: 20px;"></div>
+                        <div class="lantern-stack">
+                            <div class="lantern-container">
+                                <div class="lantern-top-cap" style="width: 16px;"></div>
+                                <div class="lantern-shape round small">
+                                    <div class="rib-c"></div>
+                                    <div class="rib-l"></div>
+                                    <div class="rib-r"></div>
+                                </div>
+                                <div class="lantern-bottom-cap" style="width: 16px;"></div>
+                            </div>
+                            <div class="lantern-connector"></div>
+                            <div class="lantern-container">
+                                <div class="lantern-top-cap"></div>
+                                <div class="lantern-shape round">
+                                    <div class="rib-c"></div>
+                                    <div class="rib-l"></div>
+                                    <div class="rib-r"></div>
+                                </div>
+                                <div class="lantern-bottom-cap"></div>
+                                <div class="lantern-knot"></div>
+                                <div class="lantern-tassel-end"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hub-header">HUB 02 | MID LIMITS</div>
+                    <div class="hub-content">
+                        <div class="stat-item">
+                            <span class="stat-label">MAX 100JT:</span>
+                            <span id="stat-count-100" class="stat-count">0 BANK</span>
+                            <span id="stat-total-100" class="stat-amount">Rp 0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">MAX 150JT:</span>
+                            <span id="stat-count-150" class="stat-count">0 BANK</span>
+                            <span id="stat-total-150" class="stat-amount">Rp 0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BOX 3: 200JT & 250JT -->
+                <div class="stat-hub-box">
+                    <div class="cny-lantern-hang hub-lantern-right">
+                        <div class="lantern-string" style="height: 40px;"></div>
+                        <div class="lantern-container">
+                            <div class="lantern-top-cap"></div>
+                            <div class="lantern-shape">
+                                <div class="rib-c"></div>
+                                <div class="rib-l"></div>
+                                <div class="rib-r"></div>
+                            </div>
+                            <div class="lantern-bottom-cap"></div>
+                            <div class="lantern-knot"></div>
+                            <div class="lantern-tassel-end"></div>
+                        </div>
+                    </div>
+                    <div class="hub-header">HUB 03 | HIGH LIMITS</div>
+                    <div class="hub-content">
+                        <div class="stat-item">
+                            <span class="stat-label">MAX 200JT:</span>
+                            <span id="stat-count-200" class="stat-count">0 BANK</span>
+                            <span id="stat-total-200" class="stat-amount">Rp 0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">MAX 250JT:</span>
+                            <span id="stat-count-250" class="stat-count">0 BANK</span>
+                            <span id="stat-total-250" class="stat-amount">Rp 0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Moved Total Ready Display INSIDE Stats Container to sit next to Hub 3 -->
+                <div id="total-ready-display" class="total-ready-badge footer-total-ready">
+                    <div class="cny-lantern-hang hub-lantern-right" style="right: 10px;">
+                        <div class="lantern-string" style="height: 40px;"></div>
+                        <div class="lantern-container">
+                            <div class="lantern-top-cap"></div>
+                            <div class="lantern-shape">
+                                <div class="rib-c"></div>
+                                <div class="rib-l"></div>
+                                <div class="rib-r"></div>
+                            </div>
+                            <div class="lantern-bottom-cap"></div>
+                            <div class="lantern-knot"></div>
+                            <div class="lantern-tassel-end"></div>
+                        </div>
+                    </div>
+                    <span class="total-label">TOTAL READY:</span>
+                    <span id="grand-total-amount" class="total-amount">Rp 0</span>
+                </div>
+            </div>
+
+            <div class="footer-buttons-group">
+                <button class="btn-action vip" onclick="openVipModal()">PENCAIRAN QRIS VIP</button>
+                <button class="btn-action minera" onclick="openMineraModal()">PENCAIRAN QRIS MINERA</button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Settings</h2>
+                <button class="close-modal" onclick="closeSettings()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Data Source 1 -->
+                <div class="settings-section">
+                    <h4
+                        style="color: #94a3b8; margin-bottom: 10px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">
+                        Data Source 1 (Yellow)</h4>
+                    <div class="form-group">
+                        <label for="sheet-link-1">Google Sheet Link</label>
+                        <input type="text" id="sheet-link-1" placeholder="Paste Google Sheet Link..."
+                            class="sheet-input-full">
+                    </div>
+                    <div class="form-row" style="display: flex; gap: 10px;">
+                        <div class="form-group" style="flex: 2;">
+                            <label for="sheet-name-1">Sheet Name</label>
+                            <input type="text" id="sheet-name-1" placeholder="DOC BANK KAS KOTOR - JANUARI"
+                                class="sheet-input-full">
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label for="sheet-range-1">Data Range</label>
+                            <input type="text" id="sheet-range-1" placeholder="H10:AT13" class="range-input-full"
+                                value="H10:AT13">
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label for="sheet-max-1">Max Tampung</label>
+                            <input type="text" id="sheet-max-1" placeholder="H9:AT9" class="range-input-full">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="divider" style="height: 1px; background: rgba(255,255,255,0.1); margin: 8px 0;"></div>
+
+                <!-- Data Source 2 -->
+                <div class="settings-section">
+                    <h4
+                        style="color: #94a3b8; margin-bottom: 10px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">
+                        Data Source 2 (Blue)</h4>
+                    <div class="form-group">
+                        <label for="sheet-link-2">Google Sheet Link</label>
+                        <input type="text" id="sheet-link-2" placeholder="Paste Google Sheet Link..."
+                            class="sheet-input-full">
+                    </div>
+                    <div class="form-row" style="display: flex; gap: 10px;">
+                        <div class="form-group" style="flex: 2;">
+                            <label for="sheet-name-2">Sheet Name</label>
+                            <input type="text" id="sheet-name-2" placeholder="DOC BANK KAS BERSIH - JANUARI"
+                                class="sheet-input-full">
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label for="sheet-range-2">Data Range</label>
+                            <input type="text" id="sheet-range-2" placeholder="H30:AT33" class="range-input-full"
+                                value="H30:AT33">
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label for="sheet-max-2">Max Tampung</label>
+                            <input type="text" id="sheet-max-2" placeholder="H29:AT29" class="range-input-full">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="justify-content: space-between;">
+                <button class="btn-delete-settings" onclick="clearAllSettings()">Hapus Data</button>
+                <div style="display: flex; gap: 12px;">
+                    <button class="btn-cancel" onclick="closeSettings()">Cancel</button>
+                    <button class="btn-save" onclick="handleExtract()">Save & Extract</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pencairan QRIS Minera Modal -->
+    <div id="minera-modal" class="modal-overlay">
+        <div class="modal-content modal-wide">
+            <div class="modal-header minera-modal-header">
+                <div class="header-with-icon">
+                    <div class="minera-icon">M</div>
+                    <h2>PENCAIRAN QRIS MINERA</h2>
+                </div>
+
+                <!-- Auto Fill & Copy Actions -->
+                <div class="minera-header-actions">
+                    <div class="btn-group-auto">
+                        <button class="btn-action btn-blue-anunnaki" onclick="autoFillMinera('in')">
+                            <i class="fas fa-arrow-down"></i> AUTO MAX IN
+                        </button>
+                        <button class="btn-action btn-blue-anunnaki" onclick="autoFillMinera('out')">
+                            <i class="fas fa-arrow-up"></i> AUTO MAX OUT
+                        </button>
+                    </div>
+
+                    <div class="header-divider"></div>
+
+                    <div class="minera-target-group">
+                        <button class="btn-action btn-gold-anunnaki" onclick="copyMineraByThreshold()">
+                            <i class="fas fa-copy"></i> COPY DATA
+                        </button>
+                        <button class="btn-action btn-reset-anunnaki" onclick="resetMineraNominal()">
+                            <i class="fas fa-undo"></i> RESET NOMINAL
+                        </button>
+                    </div>
+
+                    <div class="header-divider"></div>
+
+                    <div id="minera-total-out-container" class="minera-total-badge out">
+                        <span class="badge-label">TOTAL DANA OUT</span>
+                        <span id="minera-total-out-val" class="badge-value">0</span>
+                    </div>
+                </div> <!-- end header-actions -->
+                <button class="close-modal" onclick="closeMineraModal()">&times;</button>
+            </div> <!-- end modal-header -->
+            <div class="modal-body no-padding">
+                <div class="table-container">
+                    <table class="minera-table" id="minera-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 120px;">MAX TAMPUNG</th>
+                                <th style="width: 40px;"><input type="checkbox" id="check-all-minera"></th>
+                                <th style="width: 100px;">JENIS BANK</th>
+                                <th style="width: 80px;">TIPE</th>
+                                <th style="width: 130px;">NOMOR REKENING</th>
+                                <th
+                                    style="width: 200px; max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                    NAMA BANK</th>
+                                <th style="width: 140px;">TOTAL DANA IN</th>
+                                <th style="width: 140px;">TOTAL DANA OUT</th>
+                                <th style="width: 140px;">SALDO (DASHBOARD)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="minera-table-body">
+                            <!-- Rows injected by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="footer-summary">
+                    <span>Total Ready: <strong id="minera-ready-count">0</strong></span>
+                    <span>Total Balance: <strong id="minera-total-balance">Rp 0</strong></span>
+                </div>
+
+                <!-- NEW: Auto Check Below Limit Controls -->
+                <div class="footer-auto-check-group"
+                    style="display: flex; align-items: center; gap: 10px; margin-right: auto; margin-left: 20px; padding-left: 20px; border-left: 1px solid rgba(255,255,255,0.1);">
+                    <input type="text" id="auto-check-limit" class="minera-input"
+                        style="width: 140px; height: 36px; text-align: right; background: rgba(0,0,0,0.3); border: 1px solid #334155;"
+                        placeholder="Min. 50,000">
+                    <button class="btn-action"
+                        style="background: #f59e0b; color: #000; height: 36px; padding: 0 15px; font-size: 0.8rem; font-weight: 700; border: none; border-radius: 6px; cursor: pointer; transition: all 0.2s;"
+                        onclick="autoCheckUnderLimit()">
+                        <i class="fas fa-check-double"></i> MARK DATA
+                    </button>
+                </div>
+                <button class="btn-cancel" onclick="closeMineraModal()">Close</button>
+                <button class="btn-save btn-save-minera" onclick="saveMineraData()">Update & Sync</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <!-- Firebase SDK (Compat) -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+    <!-- Firebase Config -->
+    <script src="firebase-config.js"></script>
+
+    <!-- Fireworks Canvas (On Top) -->
+    <canvas id="fireworks-canvas"></canvas>
+
+    <!-- Main Logic -->
+    <script src="background_particles.js"></script>
+    <script src="fireworks.js"></script>
+    <script src="script.js"></script>
+    <script src="auto_check_logic.js"></script>
+    <script src="modern_cny_cursor.js"></script>
+    <script>
+        // RIPPLE EFFECT FOR BUTTONS
+        document.addEventListener('click', function (e) {
+            const button = e.target.closest('.btn-refresh, .btn-settings, .btn-action');
+            if (button) {
+                const circle = document.createElement('span');
+                const diameter = Math.max(button.clientWidth, button.clientHeight);
+                const radius = diameter / 2;
+
+                const rect = button.getBoundingClientRect();
+                circle.style.width = circle.style.height = `${diameter}px`;
+                circle.style.left = `${e.clientX - rect.left - radius}px`;
+                circle.style.top = `${e.clientY - rect.top - radius}px`;
+                circle.classList.add('ripple');
+
+                // Allow multiple ripples for rapid clicks
+                button.appendChild(circle);
+
+                // Clean up after animation
+                setTimeout(() => {
+                    circle.remove();
+                }, 600);
+            }
+        });
+    </script>
+</body>
+
+</html>

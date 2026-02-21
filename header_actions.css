@@ -1,0 +1,23 @@
+/* Header Actions Styling - Right Aligned (Absolute Override) */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: absolute;
+    /* Force Right Edge */
+    right: 20px;
+    /* Right Padding */
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 0;
+    justify-content: flex-end;
+    z-index: 200;
+    /* Ensure on top */
+}
+
+/* Ensure buttons are tightly packed if needed */
+.header-actions .btn-settings,
+.header-actions .auto-refresh-container,
+.header-actions .btn-refresh {
+    margin-left: 0;
+}

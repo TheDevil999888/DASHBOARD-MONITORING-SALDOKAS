@@ -1,0 +1,313 @@
+/* ==========================================
+   SETTINGS MODAL - MODERN CNY 2026 HORSE YEAR THEME
+   ========================================== */
+
+/* 1. Modal Overlay & Content */
+@keyframes border-glow {
+    0% {
+        box-shadow: 0 0 30px rgba(220, 20, 60, 0.3);
+        border-color: #b8860b;
+    }
+
+    50% {
+        box-shadow: 0 0 50px rgba(255, 215, 0, 0.5), inset 0 0 20px rgba(255, 215, 0, 0.1);
+        border-color: #ffd700;
+    }
+
+    100% {
+        box-shadow: 0 0 30px rgba(220, 20, 60, 0.3);
+        border-color: #b8860b;
+    }
+}
+
+#settings-modal .modal-content {
+    background: linear-gradient(135deg, #1a0505 0%, #2b0a0a 100%) !important;
+    border: 2px solid #b8860b !important;
+    /* Dark Gold Border */
+    box-shadow:
+        0 0 50px rgba(220, 20, 60, 0.4),
+        inset 0 0 60px rgba(0, 0, 0, 0.9) !important;
+    border-radius: 12px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    max-width: 700px !important;
+    /* Slightly wider */
+    animation: border-glow 3s infinite ease-in-out;
+}
+
+/* Background Pattern - Horse/CNY Motif */
+#settings-modal .modal-content::before {
+    content: '馬';
+    /* Horse Character */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 25rem;
+    font-family: "Microsoft YaHei", serif;
+    color: rgba(255, 215, 0, 0.03);
+    z-index: 0;
+    pointer-events: none;
+    font-weight: bold;
+}
+
+#settings-modal .modal-content::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background-image:
+        radial-gradient(circle at 50% 50%, rgba(255, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+    z-index: 0;
+    opacity: 0.5;
+    animation: floating-particles 20s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes floating-particles {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(-50px, -50px);
+    }
+}
+
+/* 2. Modal Header */
+#settings-modal .modal-header {
+    background: linear-gradient(90deg, #2a0a0a 0%, #4a0404 50%, #2a0a0a 100%) !important;
+    border-bottom: 2px solid #b8860b !important;
+    padding: 20px 30px !important;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#settings-modal .modal-header h2 {
+    color: #ffcc00 !important;
+    /* Bright Gold */
+    font-family: 'Outfit', sans-serif !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    font-size: 1.5rem !important;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5) !important;
+    margin: 0 !important;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Decorative lines for header */
+#settings-modal .modal-header h2::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 24px;
+    background: #ffcc00;
+    border-radius: 2px;
+    box-shadow: 0 0 8px #ffcc00;
+}
+
+/* Close Button */
+#settings-modal .close-modal {
+    color: #ffcc00 !important;
+    opacity: 0.8 !important;
+    font-size: 1.8rem !important;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5) !important;
+}
+
+#settings-modal .close-modal:hover {
+    color: #fff !important;
+    text-shadow: 0 0 15px #ff0000 !important;
+    transform: rotate(90deg);
+}
+
+/* 3. Modal Body & Sections */
+#settings-modal .modal-body {
+    background: transparent !important;
+    padding: 25px 30px !important;
+    position: relative;
+    z-index: 1;
+}
+
+.settings-section {
+    background: rgba(0, 0, 0, 0.4) !important;
+    border: 1px solid rgba(184, 134, 11, 0.3) !important;
+    border-radius: 8px !important;
+    padding: 15px 20px !important;
+    margin-bottom: 15px !important;
+    transition: all 0.3s ease !important;
+}
+
+.settings-section:hover {
+    background: rgba(0, 0, 0, 0.6) !important;
+    border-color: rgba(255, 215, 0, 0.5) !important;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.1) !important;
+}
+
+/* Section Titles */
+.settings-section h4 {
+    color: #fbbf24 !important;
+    /* Gold */
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 8px !important;
+    margin-bottom: 15px !important;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 4. Inputs */
+.form-group label {
+    color: #e2e8f0 !important;
+    font-size: 0.8rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    margin-bottom: 6px !important;
+    display: block;
+}
+
+.sheet-input-full,
+.range-input-full {
+    background: rgba(15, 23, 42, 0.8) !important;
+    border: 1px solid #334155 !important;
+    color: #ffd700 !important;
+    /* Gold Text */
+    border-radius: 6px !important;
+    padding: 10px 12px !important;
+    width: 100% !important;
+    font-family: 'Consolas', monospace !important;
+    font-size: 0.9rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.sheet-input-full:focus,
+.range-input-full:focus {
+    background: #000 !important;
+    border-color: #ffcc00 !important;
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.4) !important;
+    outline: none !important;
+}
+
+.sheet-input-full::placeholder,
+.range-input-full::placeholder {
+    color: rgba(148, 163, 184, 0.4) !important;
+    font-style: italic;
+}
+
+/* 5. Modal Footer */
+#settings-modal .modal-footer {
+    border-top: 1px solid rgba(184, 134, 11, 0.3) !important;
+    background: rgba(20, 10, 10, 0.95) !important;
+    padding: 20px 30px !important;
+    position: relative;
+    z-index: 1;
+}
+
+/* Buttons */
+.btn-save {
+    background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%) !important;
+    color: #ffd700 !important;
+    border: 1px solid #f59e0b !important;
+    padding: 10px 25px !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    box-shadow: 0 4px 15px rgba(185, 28, 28, 0.4) !important;
+    transition: all 0.3s ease !important;
+    border-radius: 6px;
+}
+
+.btn-save:hover {
+    background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%) !important;
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.6), 0 0 5px #ffd700 !important;
+    transform: translateY(-2px);
+    color: #fff !important;
+}
+
+.btn-cancel {
+    background: transparent !important;
+    border: 1px solid #475569 !important;
+    color: #94a3b8 !important;
+    padding: 10px 20px !important;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+}
+
+.btn-cancel:hover {
+    border-color: #cbd5e1 !important;
+    color: #fff !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.btn-delete-settings {
+    background: linear-gradient(135deg, #3f0e0e 0%, #1a0505 100%) !important;
+    border: 1px solid #7f1d1d !important;
+    color: #f87171 !important;
+    padding: 10px 20px !important;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.btn-delete-settings:hover {
+    background: #7f1d1d !important;
+    color: #fff !important;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
+}
+
+/* Divider */
+#settings-modal .divider {
+    background: linear-gradient(90deg, transparent, rgba(184, 134, 11, 0.4), transparent) !important;
+    height: 1px !important;
+    margin: 15px 0 !important;
+}
+
+/* Override for Data Sources Logic - Color Coding */
+
+/* Data Source 1 (Yellow) - Enforce Gold/Yellow Theme */
+.settings-section:nth-of-type(1) {
+    border-left: 4px solid #ffd700 !important;
+    background: linear-gradient(90deg, rgba(255, 215, 0, 0.05), transparent) !important;
+}
+
+.settings-section:nth-of-type(1) h4 {
+    color: #ffd700 !important;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3) !important;
+}
+
+/* Data Source 2 (Blue) - specific overrides for Blue theme */
+.settings-section:nth-of-type(3) {
+    /* It's the 3rd child (div, divider, div) */
+    border-left: 4px solid #3b82f6 !important;
+    /* Blue 500 */
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.05), transparent) !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+}
+
+.settings-section:nth-of-type(3):hover {
+    border-color: rgba(59, 130, 246, 0.6) !important;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.1) !important;
+}
+
+.settings-section:nth-of-type(3) h4 {
+    color: #60a5fa !important;
+    /* Blue 400 */
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.3) !important;
+    border-bottom-color: rgba(59, 130, 246, 0.2) !important;
+}
+
+/* Update inputs in the Blue section to have blue focus */
+.settings-section:nth-of-type(3) input:focus {
+    border-color: #3b82f6 !important;
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.4) !important;
+}

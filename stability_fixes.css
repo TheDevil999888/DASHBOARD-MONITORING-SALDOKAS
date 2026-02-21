@@ -1,0 +1,63 @@
+/* ==========================================
+   STABILITY FIXES - PREVENT LAYOUT SHIFT
+   ========================================== */
+
+/* 1. Fix Header Height & Column Widths */
+.dashboard-header {
+    height: 130px;
+    /* Enforce fixed height to prevent vertical jitter */
+    overflow: visible;
+    /* Allow drops/glows */
+}
+
+.header-left,
+.header-center,
+.header-right {
+    flex: 1;
+    /* Equal distribution */
+    flex-basis: 0;
+    /* Ensure true equality */
+    width: 33.33%;
+}
+
+.header-center {
+    display: flex;
+    justify-content: center;
+    /* Keep logo centered */
+    align-items: center;
+}
+
+.header-right {
+    display: flex;
+    justify-content: flex-end;
+    /* Keep controls right */
+    align-items: center;
+}
+
+/* 2. Stabilize Sync Status Text Width */
+.anunnaki-date-display .sync-status {
+    min-width: 180px;
+    /* Reserve space for longest status text */
+    justify-content: flex-start !important;
+    display: flex;
+    align-items: center;
+}
+
+#sync-text {
+    display: inline-block;
+    min-width: 150px;
+    /* Fixed width for text container */
+    white-space: nowrap;
+    text-align: left;
+}
+
+/* 3. Minera Modal Table Stability */
+.table-container {
+    min-height: 400px;
+    /* Prevent collapse during loading */
+}
+
+/* Ensure Logo doesn't shift */
+.cny-live-logo {
+    margin: 0 auto;
+}

@@ -1,0 +1,646 @@
+/* ==========================================
+   MODERN CNY 2026 LIVE THEME - GAMBAR 1 (CONTROLS)
+   ========================================== */
+
+/* 1. SETTINGS BUTTON - MODERN LUXURY RED */
+.btn-settings {
+    background: linear-gradient(135deg, #4a0404 0%, #8a0a0a 100%) !important;
+    border: 1px solid rgba(255, 215, 0, 0.4) !important;
+    color: #ffcc00 !important;
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.5),
+        inset 0 0 10px rgba(255, 215, 0, 0.1),
+        0 0 0 1px rgba(255, 0, 0, 0.2) !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    padding: 10px 22px !important;
+    letter-spacing: 1.5px !important;
+    font-size: 0.85rem !important;
+}
+
+.btn-settings svg {
+    stroke: #ffcc00 !important;
+    filter: drop-shadow(0 0 5px #ffcc00);
+    transition: transform 0.5s ease;
+}
+
+.btn-settings::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.4), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-settings:hover {
+    background: linear-gradient(135deg, #7a0808 0%, #b30f0f 100%) !important;
+    color: #fff !important;
+    border-color: #ffcc00 !important;
+    box-shadow:
+        0 0 25px rgba(220, 20, 60, 0.6),
+        0 0 10px rgba(255, 215, 0, 0.4) !important;
+    transform: translateY(-2px) scale(1.02) !important;
+}
+
+.btn-settings:hover svg {
+    transform: rotate(90deg);
+    stroke: #ffffff !important;
+}
+
+.btn-settings:hover::before {
+    left: 100%;
+}
+
+.btn-settings:active {
+    transform: scale(0.95) !important;
+    box-shadow: 0 0 10px rgba(220, 20, 60, 0.4) !important;
+}
+
+/* 2. AUTO REFRESH CONTAINER - HIGH TECH HUD STYLE */
+.auto-refresh-container {
+    background: rgba(20, 0, 0, 0.8) !important;
+    border: 1px solid rgba(255, 215, 0, 0.3) !important;
+    border-radius: 50px !important;
+    box-shadow:
+        inset 0 0 20px rgba(0, 0, 0, 0.8),
+        0 0 15px rgba(255, 0, 0, 0.1) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important;
+    padding: 5px 20px !important;
+    position: relative !important;
+    overflow: visible !important;
+    /* Allow toggle to glow outside */
+}
+
+/* Decorative line underneath */
+.auto-refresh-container::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ffcc00, transparent);
+    opacity: 0.5;
+    box-shadow: 0 0 5px #ffcc00;
+}
+
+/* TOGGLE SWITCH - RED DRAGON STYLE */
+.switch {
+    width: 50px !important;
+    height: 26px !important;
+}
+
+.slider.round {
+    background-color: #2a0a0a !important;
+    border: 1px solid #555 !important;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+.slider.round:before {
+    background-color: #888 !important;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Checked State */
+input:checked+.slider.round {
+    background-color: #590000 !important;
+    /* Dark Red */
+    border-color: #ff0000 !important;
+    box-shadow:
+        inset 0 0 10px rgba(255, 0, 0, 0.4),
+        0 0 10px rgba(255, 0, 0, 0.2);
+}
+
+input:checked+.slider.round:before {
+    background-color: #ffcc00 !important;
+    /* Gold knob */
+    box-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00;
+    /* Glowing Gold */
+    transform: translateX(24px) !important;
+}
+
+/* LABEL & TIMER */
+#auto-refresh-label {
+    color: #ffaa00 !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    font-size: 0.8rem !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+#timer-display {
+    color: #fff !important;
+    font-family: 'Outfit', monospace !important;
+    font-size: 1.1rem !important;
+    font-weight: 900 !important;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 0 15px #ffcc00 !important;
+    min-width: 30px !important;
+}
+
+/* INPUT FIELD - GOLD UNDERLINE */
+#refresh-interval {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 2px solid #555 !important;
+    color: #ffcc00 !important;
+    font-weight: 800 !important;
+    text-align: center !important;
+    width: 40px !important;
+    padding: 0 !important;
+    transition: all 0.3s ease !important;
+}
+
+#refresh-interval:focus {
+    border-bottom-color: #ffcc00 !important;
+    box-shadow: 0 4px 4px -2px rgba(255, 215, 0, 0.5);
+}
+
+.input-suffix {
+    color: #888 !important;
+    font-size: 0.7rem !important;
+    text-transform: uppercase !important;
+    margin-left: 5px !important;
+}
+
+/* 3. REFRESH DATA BUTTON - GOLDEN PROSPERITY */
+.btn-refresh {
+    background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%) !important;
+    color: #1a0505 !important;
+    border: 1px solid #ffebb7 !important;
+    border-radius: 8px !important;
+    padding: 10px 25px !important;
+    font-weight: 900 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    box-shadow:
+        0 4px 15px rgba(255, 215, 0, 0.3),
+        inset 0 0 10px rgba(255, 255, 255, 0.4) !important;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.btn-refresh:hover {
+    background: linear-gradient(135deg, #ffd700 0%, #ffae42 100%) !important;
+    transform: scale(1.05) translateY(-2px) !important;
+    box-shadow:
+        0 0 25px rgba(255, 215, 0, 0.6),
+        0 0 50px rgba(255, 215, 0, 0.2) !important;
+    color: #000 !important;
+    cursor: pointer !important;
+}
+
+.btn-refresh:active {
+    transform: scale(0.98) !important;
+}
+
+/* Ripple Effect Animation */
+@keyframes ripple-effect {
+    0% {
+        transform: scale(0);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(0);
+    animation: ripple-effect 0.6s linear;
+    pointer-events: none;
+}
+
+/* Live Pulse Animation for Refresh Button when Idle */
+@keyframes golden-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 215, 0, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+    }
+}
+
+.btn-refresh {
+    animation: golden-pulse 2s infinite !important;
+}
+
+
+/* ==========================================
+   MINERA MODAL - MODERN CNY 2026 LIVE STYLE
+   ========================================== */
+
+/* 1. Modal Background & Structure */
+.modal-overlay {
+    background: rgba(0, 0, 0, 0.8) !important;
+    /* Darker backdrop */
+    backdrop-filter: blur(8px) !important;
+}
+
+.modal-content.modal-wide {
+    /* Override already set in internal style, but reinforcing specifically for CNY theme elements inside */
+    border-color: #eab308 !important;
+    /* Gold Border */
+    box-shadow: 0 0 50px rgba(220, 20, 60, 0.3), inset 0 0 30px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* 2. Header: Luxury Red/Black Gradient */
+.minera-modal-header {
+    background: linear-gradient(90deg, #1a0505 0%, #3a0a0a 50%, #1a0505 100%) !important;
+    border-bottom: 2px solid #b8860b !important;
+    padding: 20px 30px !important;
+}
+
+.minera-icon {
+    background: linear-gradient(135deg, #ffd700 0%, #ffae42 100%) !important;
+    color: #4a0404 !important;
+    /* Dark Red text */
+    text-shadow: none !important;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6) !important;
+    border: 2px solid #fff !important;
+}
+
+.minera-modal-header h2 {
+    color: #ffcc00 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.4) !important;
+}
+
+/* 3. HEADER BUTTONS - "ANG PAO" & GOLD THEME */
+
+/* AUTO MAX IN/OUT (Replaces Blue) -> CRIMSON RED */
+.btn-blue-anunnaki {
+    background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%) !important;
+    border: 1px solid #fecaca !important;
+    color: #fff !important;
+    font-weight: 800 !important;
+    letter-spacing: 1px !important;
+    box-shadow: 0 4px 10px rgba(220, 38, 38, 0.4) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-blue-anunnaki:hover {
+    background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%) !important;
+    border-color: #ffea00 !important;
+    color: #ffea00 !important;
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.6) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* COPY DATA (Replaces Gold) -> PURE GOLD LUXURY */
+.btn-gold-anunnaki {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+    border: 1px solid #fef3c7 !important;
+    color: #000 !important;
+    /* Dark text for contrast */
+    font-weight: 900 !important;
+    box-shadow: 0 4px 10px rgba(245, 158, 11, 0.4) !important;
+}
+
+.btn-gold-anunnaki:hover {
+    background: linear-gradient(135deg, #fbbf24 0%, #b45309 100%) !important;
+    box-shadow: 0 0 25px rgba(251, 191, 36, 0.7) !important;
+    color: #fff !important;
+    transform: translateY(-2px) !important;
+}
+
+/* RESET NOMINAL -> DARK PLATINUM */
+.btn-reset-anunnaki {
+    background: linear-gradient(135deg, #334155 0%, #1e293b 100%) !important;
+    border: 1px solid #94a3b8 !important;
+    color: #cbd5e1 !important;
+    box-shadow: 0 4px 10px rgba(30, 41, 59, 0.5) !important;
+}
+
+.btn-reset-anunnaki:hover {
+    background: linear-gradient(135deg, #475569 0%, #334155 100%) !important;
+    border-color: #fff !important;
+    color: #fff !important;
+    box-shadow: 0 0 15px rgba(148, 163, 184, 0.4) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* TOTAL BADGE (Header) */
+/* TOTAL BADGE (Header) - CNY 2026 HORSE PRESTIGE THEME (REFINED) */
+.minera-total-badge {
+    /* Deep crisp background */
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+        linear-gradient(135deg, #1a0505 0%, #4a0404 100%) padding-box !important;
+
+    /* Elegant double border effect */
+    border: 1px solid rgba(255, 215, 0, 0.3) !important;
+    border-bottom: 3px solid #b45309 !important;
+    /* Gold/Bronze base */
+
+    border-radius: 8px !important;
+    /* Sharper corners for pro look */
+
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.5),
+        inset 0 0 30px rgba(0, 0, 0, 0.8),
+        0 0 15px rgba(220, 38, 38, 0.2) !important;
+
+    padding: 8px 25px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    /* Centered for neatness */
+    justify-content: center !important;
+    min-width: 240px !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* Subtle top highlight */
+.minera-total-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.8), transparent) !important;
+    opacity: 0.7;
+}
+
+/* Watermark - Moved and styled to be decorative but unobtrusive */
+.minera-total-badge::after {
+    content: '2026 马';
+    position: absolute !important;
+    right: 10px !important;
+    bottom: -5px !important;
+    font-size: 1.8rem !important;
+    font-weight: 900 !important;
+    color: rgba(255, 215, 0, 0.05) !important;
+    font-family: "Microsoft YaHei", serif !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+}
+
+
+@keyframes badge-shine {
+    0% {
+        left: -60%;
+    }
+
+    20% {
+        left: 200%;
+    }
+
+    100% {
+        left: 200%;
+    }
+}
+
+.minera-total-badge .badge-label {
+    color: #fbbf24 !important;
+    /* Gold */
+    background: linear-gradient(180deg, #fbbf24 0%, #d97706 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    font-size: 0.7rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    font-weight: 800 !important;
+    margin-bottom: 2px !important;
+    z-index: 1 !important;
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.8));
+}
+
+.minera-total-badge .badge-value {
+    color: #fff !important;
+    font-family: 'Outfit', sans-serif !important;
+    /* Clean font */
+    font-size: 1.8rem !important;
+    /* Slightly smaller but crisper */
+    font-weight: 800 !important;
+    letter-spacing: 0.5px !important;
+    line-height: 1.2 !important;
+    z-index: 1 !important;
+    text-shadow:
+        0 0 10px rgba(220, 38, 38, 0.8),
+        0 2px 5px rgba(0, 0, 0, 1) !important;
+}
+
+/* Value update animation pulse */
+.minera-total-badge .badge-value.pulse-animation {
+    animation: text-glow-pulse 0.5s ease-out;
+}
+
+@keyframes text-glow-pulse {
+    0% {
+        transform: scale(1);
+        text-shadow: 0 0 10px rgba(220, 38, 38, 0.8);
+    }
+
+    50% {
+        transform: scale(1.05);
+        text-shadow: 0 0 25px rgba(255, 215, 0, 0.8), 0 0 50px rgba(220, 38, 38, 1);
+    }
+
+    100% {
+        transform: scale(1);
+        text-shadow: 0 0 10px rgba(220, 38, 38, 0.8);
+    }
+}
+
+/* Empty State */
+.minera-total-badge .badge-value.empty {
+    color: #64748b !important;
+    text-shadow: none !important;
+}
+
+
+
+/* 4. TABLE STYLING */
+.table-container {
+    background: #0f0f13 !important;
+    /* Very dark background */
+}
+
+.minera-table thead th {
+    background: #2a0a0a !important;
+    /* Dark Red Header */
+    color: #fbbf24 !important;
+    /* Gold Text */
+    border-bottom: 2px solid #b45309 !important;
+    /* Dark Gold/Orange Border */
+    text-transform: uppercase !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 1px !important;
+    padding: 12px 10px !important;
+}
+
+.minera-table tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    transition: background 0.2s !important;
+}
+
+.minera-table tbody tr:hover {
+    background: rgba(234, 179, 8, 0.05) !important;
+    /* Subtle Gold Hover */
+}
+
+.minera-table td {
+    color: #e2e8f0 !important;
+    padding: 10px !important;
+    font-size: 0.85rem !important;
+    vertical-align: middle !important;
+}
+
+/* INPUTS INSIDE TABLE */
+.minera-table input[type="text"],
+.minera-table input[type="number"] {
+    background: #020617 !important;
+    border: 1px solid #334155 !important;
+    color: #fbbf24 !important;
+    /* Gold Text inputs */
+    border-radius: 4px !important;
+    padding: 6px 10px !important;
+    transition: all 0.2s !important;
+}
+
+.minera-table input:focus {
+    border-color: #eab308 !important;
+    box-shadow: 0 0 10px rgba(234, 179, 8, 0.3) !important;
+    background: #0f0f13 !important;
+}
+
+/* 5. FOOTER & SUMMARY */
+.modal-footer {
+    background: #0f0f13 !important;
+    /* Match table bg */
+    border-top: 1px solid #334155 !important;
+    padding: 20px 30px !important;
+}
+
+.footer-summary {
+    background: linear-gradient(135deg, #2a0a0a 0%, #000 100%) !important;
+    border: 1px solid #b45309 !important;
+    border-left: 5px solid #eab308 !important;
+    /* Gold Left Bar */
+    padding: 15px 40px !important;
+    /* Larger padding */
+    border-radius: 8px !important;
+    display: flex !important;
+    gap: 40px !important;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(234, 179, 8, 0.05) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* Shine effect on footer summary */
+.footer-summary::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to right, transparent, rgba(234, 179, 8, 0.1), transparent);
+    transform: rotate(45deg);
+    animation: shine-pass 6s infinite;
+}
+
+@keyframes shine-pass {
+    0% {
+        transform: translateX(-100%) rotate(45deg);
+    }
+
+    100% {
+        transform: translateX(100%) rotate(45deg);
+    }
+}
+
+.footer-summary span {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    /* Align label/value left */
+    color: #fbbf24 !important;
+    /* Gold label */
+    font-size: 0.75rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.5px !important;
+    gap: 5px !important;
+}
+
+.footer-summary strong {
+    font-size: 1.8rem !important;
+    /* HUUUGE Text */
+    color: #fff !important;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4) !important;
+    line-height: 1 !important;
+}
+
+/* FOOTER BUTTONS */
+.btn-save-minera {
+    background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%) !important;
+    /* Bright Red */
+    border: none !important;
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.5) !important;
+    font-size: 1rem !important;
+    padding: 12px 30px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+}
+
+.btn-save-minera:hover {
+    background: linear-gradient(135deg, #ff0000 0%, #990000 100%) !important;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.7) !important;
+    transform: scale(1.05) !important;
+}
+
+.btn-cancel {
+    background: transparent !important;
+    border: 1px solid #475569 !important;
+    color: #94a3b8 !important;
+    text-transform: uppercase !important;
+}
+
+.btn-cancel:hover {
+    border-color: #fff !important;
+    color: #fff !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* CLOSE BUTTON (Top Right) */
+.close-modal {
+    color: #ef4444 !important;
+    font-size: 2rem !important;
+    opacity: 0.7 !important;
+    transition: all 0.3s !important;
+}
+
+.close-modal:hover {
+    opacity: 1 !important;
+    transform: rotate(90deg) !important;
+    text-shadow: 0 0 15px #ef4444 !important;
+}

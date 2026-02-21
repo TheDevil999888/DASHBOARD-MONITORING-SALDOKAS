@@ -1,0 +1,21 @@
+{
+    "dashboardTitle": "DASHBOARD MONITORING KAS",
+    "sections": [
+        {
+            "id": "kas-kotor",
+            "title": "BANK KAS KOTOR",
+            "sheetName": "DOC BANK KAS KOTOR - JANUARI",
+            "theme": "yellow",
+            "range": "H10:AT13",
+            "data": []
+        },
+        {
+            "id": "kas-bersih",
+            "title": "BANK KAS BERSIH",
+            "sheetName": "DOC BANK KAS BERSIH - JANUARI",
+            "theme": "blue",
+            "range": "H30:AT33",
+            "data": []
+        }
+    ]
+}
