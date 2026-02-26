@@ -11,11 +11,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="modern_cny_2026.css">
-    <link rel="stylesheet" href="settings_cny_2026.css">
-    <link rel="stylesheet" href="stability_fixes.css">
+    <link rel="stylesheet" href="style.css?v=2026v3">
+    <link rel="stylesheet" href="modern_cny_2026.css?v=2026v3">
+    <link rel="stylesheet" href="settings_cny_2026.css?v=2026v3">
+    <link rel="stylesheet" href="stability_fixes.css?v=2026v3">
+    <!-- CNY + Ramadhan 2026 Mix Theme CSS -->
+    <link rel="stylesheet" href="theme_cny_ramadan.css?v=2026v3">
     <style>
         /* EXTRA OVERRIDE FOR ULTRA ANUNNAKI MODAL */
         .modal-content.modal-wide {
@@ -110,6 +115,7 @@
                 <div class="lantern-tassel-end"></div>
             </div>
         </div>
+
     </div>
 
     <!-- Main Dashboard Container -->
@@ -571,6 +577,44 @@
         </div>
     </div>
 
+    <!-- NEW: RAMADHAN + CNY 2026 MIX LIVE ELEMENTS (Moved to top-stack) -->
+    <!-- Gradient overlay -->
+    <div class="mix-theme-overlay"></div>
+
+    <!-- Hanging Ketupats -->
+    <div class="ketupat-hang left-2">
+        <div class="ketupat-string"></div>
+        <div class="ketupat-body"></div>
+        <div class="ketupat-tassel"></div>
+    </div>
+    <div class="ketupat-hang right-2">
+        <div class="ketupat-string" style="height: 120px;"></div>
+        <div class="ketupat-body"></div>
+        <div class="ketupat-tassel"></div>
+    </div>
+
+    <!-- Glowing Crescent Moon -->
+    <div class="ramadhan-moon-container">
+        <div class="ramadhan-moon"></div>
+    </div>
+
+    <!-- Typography / Tech Greetings -->
+    <div class="mix-greeting-hub">
+        <div class="mix-greet-text">2026</div>
+        <div class="mix-greet-text sub">LUXURY</div>
+    </div>
+
+    <!-- NEW: Shio Kuda + Ramadhan Emblem -->
+    <div class="shio-kuda-emblem">
+        <div class="shio-kuda-circle"></div>
+        <div class="shio-kuda-circle outer"></div>
+        <div class="shio-kuda-text-container">
+            <i class="fas fa-horse-head"></i>
+            <div class="shio-kuda-title">SHIO KUDA</div>
+            <div class="ramadhan-title">RAMADHAN 2026</div>
+        </div>
+    </div>
+
     <!-- JavaScript -->
     <!-- Firebase SDK (Compat) -->
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
@@ -583,11 +627,13 @@
     <canvas id="fireworks-canvas"></canvas>
 
     <!-- Main Logic -->
-    <script src="background_particles.js"></script>
-    <script src="fireworks.js"></script>
-    <script src="script.js"></script>
-    <script src="auto_check_logic.js"></script>
-    <script src="modern_cny_cursor.js"></script>
+    <script src="background_particles.js?v=2026v3"></script>
+    <script src="fireworks.js?v=2026v3"></script>
+    <script src="script.js?v=2026v3"></script>
+    <script src="auto_check_logic.js?v=2026v3"></script>
+    <script src="modern_cny_cursor.js?v=2026v3"></script>
+    <!-- CNY + Ramadhan Mix 2026 Script -->
+    <script src="theme_cny_ramadan.js?v=2026v3"></script>
     <script>
         // RIPPLE EFFECT FOR BUTTONS
         document.addEventListener('click', function (e) {
